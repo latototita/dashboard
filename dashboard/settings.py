@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['adsket.herokuapp.com','localhost','143.198.108.85']
 # Application definition
 
 INSTALLED_APPS = [
+    'ads',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
