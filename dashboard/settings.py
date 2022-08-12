@@ -135,7 +135,7 @@ ADS_GOOGLE_ADSENSE_CLIENT = 'ca-pub-xxxxxxxxxxxxxxxx'  # OPTIONAL - DEFAULT TO N
 
 ADS_ZONES = {
     'header': {
-        'name': _('Header'),
+        'name': gettext('Header'),
         'ad_size': {
             'xs': '720x150',
             'sm': '800x90',
@@ -146,7 +146,7 @@ ADS_ZONES = {
         'google_adsense_format': 'auto',  # OPTIONAL - DEFAULT TO None
     },
     'content': {
-        'name': _('Content'),
+        'name': gettext('Content'),
         'ad_size': {
             'xs': '720x150',
             'sm': '800x90',
@@ -157,7 +157,7 @@ ADS_ZONES = {
         'google_adsense_format': 'auto',  # OPTIONAL - DEFAULT TO None
     },
     'sidebar': {
-        'name': _('Sidebar'),
+        'name': gettext('Sidebar'),
         'ad_size': {
             'xs': '720x150',
             'sm': '800x90',
