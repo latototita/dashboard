@@ -128,3 +128,41 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #STMP configuration
+
+ADS_GOOGLE_ADSENSE_CLIENT = 'ca-pub-xxxxxxxxxxxxxxxx'  # OPTIONAL - DEFAULT TO None
+
+ADS_ZONES = {
+    'header': {
+        'name': _('Header'),
+        'ad_size': {
+            'xs': '720x150',
+            'sm': '800x90',
+            'md': '800x90',
+            'lg': '800x90'
+        },
+        'google_adsense_slot': 'xxxxxxxxx',  # OPTIONAL - DEFAULT TO None
+        'google_adsense_format': 'auto',  # OPTIONAL - DEFAULT TO None
+    },
+    'content': {
+        'name': _('Content'),
+        'ad_size': {
+            'xs': '720x150',
+            'sm': '800x90',
+            'md': '800x90',
+            'lg': '800x90'
+        },
+        'google_adsense_slot': 'xxxxxxxxx',  # OPTIONAL - DEFAULT TO None
+        'google_adsense_format': 'auto',  # OPTIONAL - DEFAULT TO None
+    },
+    'sidebar': {
+        'name': _('Sidebar'),
+        'ad_size': {
+            'xs': '720x150',
+            'sm': '800x90',
+            'md': '800x90',
+            'lg': '800x90'
+        },
+        'google_adsense_slot': 'xxxxxxxxx',  # OPTIONAL - DEFAULT TO None
+        'google_adsense_format': 'auto',  # OPTIONAL - DEFAULT TO None
+    },
+}

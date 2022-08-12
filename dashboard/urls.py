@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path  , include, re_path
 from django.conf.urls.static import static
 from . import settings
-from django.conf.urls import url
 from django.views.static import serve
 from django.conf.urls import (
                                 handler400,
@@ -27,6 +26,7 @@ from django.conf.urls import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(r'^ads/', include('ads.urls')),
     path('', include('Main.urls', namespace='Main')),
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
 ]

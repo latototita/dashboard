@@ -16,4 +16,6 @@ def signin(request):
     return render(request,'sign-in.html',{})
 def tables(request):
     return render(request,'tables.html',{})
+def dashboard(request):
+    return render(request,'dashboard.html',{})
 
