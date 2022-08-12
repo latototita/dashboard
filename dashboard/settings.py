@@ -25,7 +25,7 @@ SECRET_KEY = '@9z11fe)5mnzc@c!q197_7uqud2l6t-cwbe+m5a-=%3g0e2_p_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['adsket.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['adsket.herokuapp.com','localhost','143.198.108.85']
 
 
 # Application definition
