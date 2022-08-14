@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Main',
-    'sekizai',
 ]
 
 MIDDLEWARE = [
@@ -115,7 +114,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+AUTH_USER_MODEL ='Main.modes'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -131,41 +130,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #STMP configuration
-
-ADS_GOOGLE_ADSENSE_CLIENT = 'ca-pub-xxxxxxxxxxxxxxxx'  # OPTIONAL - DEFAULT TO None
-
-ADS_ZONES = {
-    'header': {
-        'name': gettext('Header'),
-        'ad_size': {
-            'xs': '720x150',
-            'sm': '800x90',
-            'md': '800x90',
-            'lg': '800x90'
-        },
-        'google_adsense_slot': 'xxxxxxxxx',  # OPTIONAL - DEFAULT TO None
-        'google_adsense_format': 'auto',  # OPTIONAL - DEFAULT TO None
-    },
-    'content': {
-        'name': gettext('Content'),
-        'ad_size': {
-            'xs': '720x150',
-            'sm': '800x90',
-            'md': '800x90',
-            'lg': '800x90'
-        },
-        'google_adsense_slot': 'xxxxxxxxx',  # OPTIONAL - DEFAULT TO None
-        'google_adsense_format': 'auto',  # OPTIONAL - DEFAULT TO None
-    },
-    'sidebar': {
-        'name': gettext('Sidebar'),
-        'ad_size': {
-            'xs': '720x150',
-            'sm': '800x90',
-            'md': '800x90',
-            'lg': '800x90'
-        },
-        'google_adsense_slot': 'xxxxxxxxx',  # OPTIONAL - DEFAULT TO None
-        'google_adsense_format': 'auto',  # OPTIONAL - DEFAULT TO None
-    },
-}
