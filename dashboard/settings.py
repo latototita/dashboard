@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import gettext
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['adsket.herokuapp.com','localhost','143.198.108.85']
 # Application definition
 
 INSTALLED_APPS = [
-    'ads',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
