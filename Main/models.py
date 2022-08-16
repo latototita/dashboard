@@ -20,16 +20,23 @@ class User(AbstractUser):
 	country=models.CharField(blank=True,max_length=100)
 	district=models.CharField(max_length=13)
 	bank=models.CharField(max_length=100,unique=True)
+	def __str__(self):
+		return self.username
+        
 class Watched(models.Model):
 	person = models.ForeignKey(
         User, on_delete=models.CASCADE)
 	total_ads_watched = models.CharField(max_length = 30)
 	date_watched =models.DateTimeField(default=timezone.now)
+	def __str__(self):
+		return self.person
 	class Meta:
 		ordering = ('-date_watched', )
 
 class Location(models.Model):
 	name= models.CharField(max_length=1000)
+	def __str__(self):
+		return self.name
 
 class Ads(models.Model):
 	file = models.FileField(blank=True,null=True)
@@ -40,4 +47,5 @@ class Ads(models.Model):
         Location, on_delete=models.CASCADE)
 	prime_price_per_click =  models.IntegerField(default=0.26)
 	advance_prime_price_per_click =  models.IntegerField(default=0.45)
-
+	def __str__(self):
+		return self.location
