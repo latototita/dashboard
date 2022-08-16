@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import User
+from .models import *
 
 def group_check_prime_user(user):
     return user.groups.filter(name__in=['Prime_User'])
