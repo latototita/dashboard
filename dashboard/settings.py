@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Main',
+    'Paystack',
 ]
 
 MIDDLEWARE = [
@@ -113,7 +114,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-AUTH_USER_MODEL ='Main.modes'
+AUTH_USER_MODEL ='Main.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -129,3 +130,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #STMP configuration
+
+
+#Paystack
+PAYSTACK_SECRET_KEY=os.environ.get('PAYSTACK_SECRET_KEY')
+PAYSTACK_PUBLIC_KEY=os.environ.get('PAYSTACK_PUBLIC_KEY')
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

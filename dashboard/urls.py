@@ -26,8 +26,8 @@ from django.conf.urls import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'^ads/', include('ads.urls')),
     path('', include('Main.urls', namespace='Main')),
+    path('Online/payments/', include('Paystack.urls', namespace='Paystack')),
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
 ]
 
