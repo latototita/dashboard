@@ -72,7 +72,6 @@ def tables(request):
     context={'watched':watched}
     return render(request,'tables.html',context)
 def dashboard(request):
-    ades=Ads.object.filter(prime=False)
     if request.user.is_authenticated:
         watched=Watched.object.filter(ids=request.user.id)
         ads={}
