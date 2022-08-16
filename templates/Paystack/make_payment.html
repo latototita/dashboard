@@ -5,10 +5,9 @@
 <!-- Register Content Start -->
                         <div class="col-lg-6">
                             <div class="login-reg-form-wrap mt-md-34 mt-sm-34">
-                                <h2>Enter Amount</h2>
+                                <h2>Make Payment total of: {{ payment.amount }}</h2>
                                 <form method="post">
-                                    {% csrf_token %}
-                                    {{ payment_form|crispy }}
+                                    <script src="https://js.paystack.co/v1/inline.js"></script>
                                     <div class="single-input-item">
                                         <button class="sqr-btn" type="submit" >Submit</button>
                                     </div>
@@ -21,4 +20,29 @@
             </div>
         </div>
         <!-- login register wrapper end -->
+<script type="text/javascript">
+    function payWithPayStack() {
+        // body...
+        let currency="GHS";
+        let plan="";
+        let ref = "{{ payment.ref }}";
+        let obj={
+            key:"{{ paystack_public_key }}",
+            email: "{{ payment.email }}",
+            amount: "{{ payment.amount_value }}",
+            ref: ref,
+            callback: function(response){
+                window.location.href="{% url 'verify_payment' payment.ref %}"
+            }
+        }
+        if (Boolean(currency)){
+            obj.currency=currency.toUpperCase()
+        }
+        if (Boolean(plan)){
+            obj.plan=plan;
+        }
+        var handler=PaystackPop.setup(obj);
+        handler.openIf
+    }
+</script>
 {% endblock %}
