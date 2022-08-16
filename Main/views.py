@@ -19,13 +19,13 @@ def index(request):
     context={}
     return render(request,'documentation.html',context)
 def billing(request):
-    user=User.object.filter(id=request.user.id)
+    user=User.objects.filter(id=request.user.id)
     
     return render(request,'billing.html',{})
 
 def profile(request):
     if request.user.is_authenticated:
-        user=User.object.filter(id=request.user.id)
+        user=User.objects.filter(id=request.user.id)
     else:
         user=None
     context={'user':user}
@@ -68,12 +68,12 @@ def signup(response):
     context={'form':form}
     return render(request,'sign-up.html',context)
 def tables(request):
-    watched=Watched.object.filter(person=request.user)
+    watched=Watched.objects.filter(person=request.user)
     context={'watched':watched}
     return render(request,'tables.html',context)
 def dashboard(request):
     if request.user.is_authenticated:
-        watched=Watched.object.filter(ids=request.user.id)
+        watched=Watched.objects.filter(ids=request.user.id)
         ads={}
         for ad in ades:
             if ad not in watched:
@@ -85,8 +85,8 @@ def dashboard(request):
     return render(request,'dashboard.html',context)
 
 def Primeuser(request):
-    ades=Ads.object.filter(prime=True)
-    watched=Watched.object.filter(ids=request.user.id)
+    ades=Ads.objects.filter(prime=True)
+    watched=Watched.objects.filter(ids=request.user.id)
     ads={}
     for ad in ades:
         if ad not in watched:
