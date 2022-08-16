@@ -73,12 +73,15 @@ def tables(request):
     return render(request,'tables.html',context)
 def dashboard(request):
     ades=Ads.object.filter(prime=False)
-    watched=Watched.object.filter(ids=request.user.id)
-    ads={}
-    for ad in ades:
-        if ad not in watched:
-            ads.append(ad)
-    newads=ads[0]
+    if request.user.is_authenticated:
+        watched=Watched.object.filter(ids=request.user.id)
+        ads={}
+        for ad in ades:
+            if ad not in watched:
+                ads.append(ad)
+            newads=ads[0]
+    else:
+        newads=None
     context={'newads':newads}
     return render(request,'dashboard.html',context)
 
