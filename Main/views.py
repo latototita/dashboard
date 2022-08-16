@@ -24,7 +24,10 @@ def billing(request):
     return render(request,'billing.html',{})
 
 def profile(request):
-    user=User.object.filter(id=request.user.id)
+    if request.user.is_authenticated:
+        user=User.object.filter(id=request.user.id)
+    else:
+        user=None
     context={'user':user}
     return render(request,'profile.html',context)
 def signin(request):
