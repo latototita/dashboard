@@ -1,14 +1,19 @@
 from django.db import models
-
 # Create your models here.
 from django.utils import timezone
 from django.conf import settings
 import datetime
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from datetime import date
+from django.db import models
+from django.contrib.auth.models import AbstractUser
 
+
+class Country(models.Model):
+	name= models.CharField(max_length=1000)
+	def __str__(self):
+		return self.name
 
 class User(AbstractUser):
 	username = models.CharField(max_length=50,blank=True,null=True,unique=True)
@@ -17,14 +22,18 @@ class User(AbstractUser):
 	last_name = models.CharField(max_length=15)
 	phone_no = models.CharField(max_length=10)
 	image=models.ImageField(upload_to='media/profile',default='')
-	country=models.CharField(blank=True,max_length=100)
+	country=models.ForeignKey(
+        Country, on_delete=models.CASCADE)
 	district=models.CharField(max_length=13)
 	bank=models.CharField(max_length=100,unique=True)
 	prime=models.BooleanField(default=False)
 	advance_prime=models.BooleanField(default=False)
+	account_number= models.CharField(max_length=100,blank=True)
+	advertiser=models.BooleanField(default=False)
+	date_added =models.DateTimeField(default=timezone.now)
 	def __str__(self):
 		return self.username
-        
+    
 class Watched(models.Model):
 	person = models.ForeignKey(
         User, on_delete=models.CASCADE)
@@ -39,6 +48,8 @@ class Location(models.Model):
 	name= models.CharField(max_length=1000)
 	def __str__(self):
 		return self.name
+
+
 
 class Ads(models.Model):
 	file = models.FileField(blank=True,null=True)

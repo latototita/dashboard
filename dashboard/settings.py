@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '@9z11fe)5mnzc@c!q197_7uqud2l6t-cwbe+m5a-=%3g0e2_p_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['adsket.herokuapp.com','localhost','143.198.108.85']
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Main',
     'Paystack',
+    'Accounts',
 ]
 
 MIDDLEWARE = [
@@ -118,12 +119,12 @@ AUTH_USER_MODEL ='Main.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'staticfiles'),
 )
 
-STATIC_ROOT=os.path.join(BASE_DIR ,'staticfiles')
+STATIC_ROOT=os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -136,3 +137,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 PAYSTACK_SECRET_KEY=os.environ.get('PAYSTACK_SECRET_KEY')
 PAYSTACK_PUBLIC_KEY=os.environ.get('PAYSTACK_PUBLIC_KEY')
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)

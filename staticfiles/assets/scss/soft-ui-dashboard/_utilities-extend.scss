@@ -1,11 +1,1 @@
-@each $name, $value in $max-width-dim{
-  .max-width-#{$name} {
-    max-width: $value !important;
-  }
-}
-
-@each $name, $value in $width-dim{
-  .width-#{$name} {
-    width: $value !important;
-  }
-}
+/home/omenyo/Desktop/dashboard/static/assets/scss/soft-ui-dashboard/_utilities-extend.scss

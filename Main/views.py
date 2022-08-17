@@ -32,43 +32,7 @@ def profile(request):
         user=None
     context={'user':user}
     return render(request,'profile.html',context)
-def signin(request):
-    if request.method=='POST':
-        username=request.POST.get('username')
-        password=request.POST.get('password')
-        user=authenticate(request, username=username,password=password)
 
-        if user is not None:
-            login(request,user)
-            request.session['customer'] = user.id
-            if 'next' in request.POST:
-                return redirect(request.POST['next'])
-            else:
-                messages.success(request, f'Welcome, {username}.You have Signed In Successfully')
-                return redirect('dashboard')
-        else:
-            messages.success(request, 'Username or Password Incorrect!')
-            context={}
-            return render(request,'sign-in.html',context)
-    context={}
-    return render(request,'sign-in.html',context)
-def signup(response):
-    if response.method=="POST":
-        form=RegistrationForm(response.POST)
-        if form.is_valid():
-            if User.objects.filter(email=form.cleaned_data['email']):
-                messages.success(response, f'Email already in use, Please use a different Email')
-                return render(response,'signup.html',)
-            elif User.objects.filter(username=form.cleaned_data['username']):
-                messages.success(response, f'Username already in use, Please use a different Username')
-                return render(response,'signup.html',)
-            form.save()
-            messages.success(response, f'Successfully Registered,Please log into your Account to Make Orders')
-            return redirect('login')
-    else:
-        form=RegistrationForm()
-    context={'form':form}
-    return render(request,'sign-up.html',context)
 def tables(request):
     if request.user.is_authenticated:
         watched=Watched.objects.filter(person=request.user)

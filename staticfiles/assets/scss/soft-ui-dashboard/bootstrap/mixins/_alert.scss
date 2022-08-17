@@ -1,11 +1,1 @@
-// scss-docs-start alert-variant-mixin
-@mixin alert-variant($background, $border, $color) {
-  color: $color;
-  @include gradient-bg($background);
-  border-color: $border;
-
-  .alert-link {
-    color: shade-color($color, 20%);
-  }
-}
-// scss-docs-end alert-variant-mixin
+/home/omenyo/Desktop/dashboard/static/assets/scss/soft-ui-dashboard/bootstrap/mixins/_alert.scss

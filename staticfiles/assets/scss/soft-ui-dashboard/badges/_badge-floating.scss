@@ -1,17 +1,1 @@
-//
-// Badge floating
-//
-
-
-.btn {
-    .badge-floating {
-        position: absolute;
-        top: -$badge-floating-top;
-        transform: translateY($badge-floating-top);
-        border: $badge-floating-border solid;
-
-        &.badge:not(.badge-circle) {
-            transform: $badge-floating-transform;
-        }
-    }
-}
+/home/omenyo/Desktop/dashboard/static/assets/scss/soft-ui-dashboard/badges/_badge-floating.scss
