@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import User, Ads, Location,Watched
+from .models import *
+from .forms import *
 
 def group_check_prime_user(user):
     return user.groups.filter(name__in=['Prime_User'])
@@ -19,7 +20,8 @@ def index(request):
     context={}
     return render(request,'documentation.html',context)
 def billing(request):
-    user=User.objects.filter(id=request.user.id)
+    if request.user.is_authenticated:
+        user=User.objects.filter(id=request.user.id)
     
     return render(request,'billing.html',{})
 
@@ -68,7 +70,10 @@ def signup(response):
     context={'form':form}
     return render(request,'sign-up.html',context)
 def tables(request):
-    watched=Watched.objects.filter(person=request.user)
+    if request.user.is_authenticated:
+        watched=Watched.objects.filter(person=request.user)
+    else:
+        watched=None
     context={'watched':watched}
     return render(request,'tables.html',context)
 def dashboard(request):
@@ -95,22 +100,36 @@ def Primeuser(request):
     context={'newads':newads}
     return render(request,'dashboard.html',context)
 def become_prime_user(request):
-    try:
-        prime_group = Group.objects.get(name = 'Prime_User')
-    except:
-        prime_group_created= Group.objects.create(name='Prime_User')
-        prime_group = Group.objects.get(name = 'Prime_User')
-    user=User.objects.get(id=request.user.id)
-    user.groups.add(prime_group)
+    if response.method=="POST":
+        form = Join_Prime_Form(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                prime_group = Group.objects.get(name = 'Prime_User')
+            except:
+                prime_group_created= Group.objects.create(name='Prime_User')
+                prime_group = Group.objects.get(name = 'Prime_User')
+            user=User.objects.get(id=request.user.id)
+            user.groups.add(prime_group)
+            form.save()
+    else:
+        form = Join_Prime_Form()
+        context={'form':form}
     return render(request,'dashboard.html',context)
 
 def become_advance_prime_user(request):
-    try:
-        prime_group = Group.objects.get(name = 'Advance_Prime_User')
-    except:
-        prime_group_created= Group.objects.create(name='Advance_Prime_User')
-        prime_group = Group.objects.get(name = 'Advance_Prime_User')
-    user=User.objects.get(id=request.user.id)
-    user.groups.add(prime_group)
+    if response.method=="POST":
+        form = Join_Advance_Prime_Form(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                prime_group = Group.objects.get(name = 'Advance_Prime_User')
+            except:
+                prime_group_created= Group.objects.create(name='Advance_Prime_User')
+                prime_group = Group.objects.get(name = 'Advance_Prime_User')
+            user=User.objects.get(id=request.user.id)
+            user.groups.add(prime_group)
+            form.save()
+    else:
+        form = Join_Advance_Prime_Form()
+        context={'form':form}
     return render(request,'dashboard.html',context)
 
