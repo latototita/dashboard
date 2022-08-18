@@ -1,1 +1,9 @@
-/home/omenyo/Desktop/dashboard/static/assets/scss/soft-ui-dashboard/bootstrap/mixins/_clearfix.scss
+// scss-docs-start clearfix
+@mixin clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+// scss-docs-end clearfix

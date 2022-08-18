@@ -1,1 +1,7 @@
-/home/omenyo/Desktop/dashboard/static/assets/scss/soft-ui-dashboard/variables/_fixed-plugin.scss
+$fixed-plugin-bottom: 30px !default;
+$fixed-plugin-right: $fixed-plugin-bottom !default;
+$fixed-plugin-radius: 50% !default;
+$fixed-plugin-box-shadow: $navbar-box-shadow !default;
+$fixed-plugin-button-z-index: 990 !default;
+$fixed-plugin-card-z-index: 1020 !default;
+$fixed-plugin-card-width: 360px !default;

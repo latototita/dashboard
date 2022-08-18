@@ -1,1 +1,8 @@
-/home/omenyo/Desktop/dashboard/static/assets/scss/soft-ui-dashboard/_badge.scss
+@each $prop, $value in $theme-colors {
+  .badge.bg-#{$prop} {
+    background: $value;
+  }
+}
+.badge {
+  text-transform: uppercase;
+}

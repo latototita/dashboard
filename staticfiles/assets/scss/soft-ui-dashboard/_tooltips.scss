@@ -1,1 +1,9 @@
-/home/omenyo/Desktop/dashboard/static/assets/scss/soft-ui-dashboard/_tooltips.scss
+.bs-tooltip-auto[x-placement^=right] .tooltip-arrow,
+.bs-tooltip-right .tooltip-arrow {
+  left: $tooltip-arrow-left;
+}
+
+.bs-tooltip-auto[x-placement^=left] .tooltip-arrow,
+.bs-tooltip-left .tooltip-arrow {
+  right: $tooltip-arrow-right;
+}
