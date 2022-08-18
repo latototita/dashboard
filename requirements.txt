@@ -2,3 +2,4 @@ Django==2.2.0
 gunicorn
 django_heroku
 whitenoise
+django-crispy-forms
