@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import *
 from .forms import *
+from django.views import View
 
 def group_check_prime_user(user):
     return user.groups.filter(name__in=['Prime_User'])
@@ -64,7 +65,7 @@ def Primeuser(request):
     context={'newads':newads}
     return render(request,'dashboard.html',context)
 def become_prime_user(request):
-    if response.method=="POST":
+    if request.method=="POST":
         form = Join_Prime_Form(request.POST, request.FILES)
         if form.is_valid():
             try:
@@ -78,7 +79,7 @@ def become_prime_user(request):
     else:
         form = Join_Prime_Form()
         context={'form':form}
-    return render(request,'dashboard.html',context)
+    return render(request,'Form.html',context)
 
 def become_advance_prime_user(request):
     if response.method=="POST":
@@ -95,5 +96,35 @@ def become_advance_prime_user(request):
     else:
         form = Join_Advance_Prime_Form()
         context={'form':form}
-    return render(request,'dashboard.html',context)
+    return render(request,'Form.html',context)
 
+class Busket(View):
+
+    def post(self , request):
+        ad = request.POST.get('ad')
+        busket = request.session.get('busket')
+        if busket:
+            quantity = busket.get(ad)
+            if quantity:
+                if remove:
+                    if quantity<=1:
+                        busket.pop(ad)
+                    else:
+                        busket[ad]  = quantity-1
+                else:
+                    busket[ad]  = quantity+1
+
+            else:
+                busket[ad] = 1
+        else:
+            busket = {}
+            busket[ad] = 1
+
+        request.session['busket'] = busket
+        return redirect('homepage')
+
+
+
+    def get(self , request):
+        # print()
+        return HttpResponseRedirect(f'/profile{request.get_full_path()[1:]}')
