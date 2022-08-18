@@ -235,12 +235,12 @@
                       <a class="d-block shadow-xl border-radius-xl">
                         
                       
-                      <video id="someID" class="img-fluid shadow border-radius-xl" width="100%" height="480" >
+                      <video id="someID" class="img-fluid shadow border-radius-xl" width="100%" height="480" poster="{% static 'assets/team-3.jpg' %}">
                         <source src="https://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video></a>
-<button onclick="playVid()" type="button">Play Video</button>
-<button onclick="pauseVid()" type="button">Pause Video</button><br> 
+<button onclick="playVid()" class="btn bg-gradient-primary w-100 px-3 mb-2 active" data-class="bg-transparent" type="button">Play Video</button>
+<button onclick="pauseVid()" class="btn bg-gradient-primary w-100 px-3 mb-2 active" data-class="bg-transparent" type="button">Pause Video</button><br> 
 <form method="POST" action="week.php">
     <div class="input-group">
         <button type="submit" class="btn" id="myBtn" name="register_btn" disabled="disabled"><h6>FINISH</h6></button>
