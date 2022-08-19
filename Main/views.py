@@ -27,6 +27,12 @@ def billing(request):
     return render(request,'billing.html',{})
 
 def profile(request):
+    busket = request.session.get('busket')
+    if not busket:
+        request.session['busket'] = {}
+        ades={}
+    else:
+        ades = Ad.get_ads_by_id(list(request.session.get('busket').keys()))
     if request.user.is_authenticated:
         user=User.objects.filter(id=request.user.id)
     else:

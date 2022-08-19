@@ -51,7 +51,7 @@ class Location(models.Model):
 
 
 
-class Ads(models.Model):
+class Ad(models.Model):
 	file = models.FileField(blank=True,null=True)
 	description_of_ad= models.TextField()
 	button_link= models.CharField(max_length=1000)
@@ -60,5 +60,16 @@ class Ads(models.Model):
         Location, on_delete=models.CASCADE)
 	prime_price_per_click =  models.IntegerField(default=0.26)
 	advance_prime_price_per_click =  models.IntegerField(default=0.45)
+	
+	@staticmethod
+	def get_ads_by_id(ids):
+		return Ad.objects.filter(id__in =ids).order_by('-id')
+	@staticmethod
+	def get_ad_by_id(id):
+		return Ad.objects.filter(id__in =id).order_by('?')
+
+
+
+
 	def __str__(self):
 		return self.location
