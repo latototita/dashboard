@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from Main.models import *
 from Main.forms import *
@@ -41,3 +42,10 @@ def signup(response):
         form=CustomUserCreationForm()
     context={'form':form}
     return render(response,'sign-up.html',context)
+
+
+@login_required(login_url='login')
+def Logout(request):
+    logout(request)
+    messages.success(request, 'You have Signed Out Successfully')
+    return redirect('profile')

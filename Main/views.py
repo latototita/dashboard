@@ -37,7 +37,24 @@ def profile(request):
         user=User.objects.filter(id=request.user.id)
     else:
         user=None
-    context={'user':user}
+    if request.user.is_authenticated:
+        try:
+            ades=Ad.objects.filter()
+        except:
+            ades={}
+        try:
+            watched=Watched.objects.filter(ids=request.user.id)
+        except:
+            watched={}
+        ads={}
+        if ades is not {} and watched is not {}:
+            for ad in ades:
+                if ad not in watched:
+                    ads.append(ad)
+                newads=ads[0]
+    else:
+        newads=None
+    context={'user':user,'newads':newads,}
     return render(request,'profile.html',context)
 
 def tables(request):
