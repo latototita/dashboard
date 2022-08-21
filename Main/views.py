@@ -21,10 +21,30 @@ def index(request):
     context={}
     return render(request,'documentation.html',context)
 def billing(request):
+    result = request.GET.get('result', None)
+    if request.method=='POST':
+        if result.status=="successful":
+            billing=Billing_rave(
+                customer=request.user,
+                amount=result.amount,
+                currency=result.currency,
+                reference=result.tx_ref,
+                email=result.email,
+                phone_no=result.phoneNumber,
+                transaction_id=result.transaction_id,
+                )
+            billing.save()
+            messages.success(request, f'Payment successful, Amount: {result.amount} {result.currency} Paid with a transaction ID of {result.transaction_id}')
+            return redirect('billing')
+        if result.status!="successful":
+            messages.success(request, 'Error Making Payments, Payment Failed. Check Your Finances')
+            return redirect('billing')
     if request.user.is_authenticated:
-        user=User.objects.filter(id=request.user.id)
-    
-    return render(request,'billing.html',{})
+        user=request.user
+    else:
+        user=None
+    context={'user':user}
+    return render(request,'billing.html',context)
 
 def profile(request):
     busket = request.session.get('busket')
@@ -144,7 +164,7 @@ class Busket(View):
             busket[ad] = 1
 
         request.session['busket'] = busket
-        return redirect('homepage')
+        return redirect('profile')
 
 
 

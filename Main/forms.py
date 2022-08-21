@@ -7,7 +7,10 @@ class CustomUserCreationForm(UserCreationForm):
     email=forms.EmailField()
     class Meta:
         model = User
-        fields = ('first_name','last_name','username','email','phone_no','image','country','district','bank',"password1","password2")
+        fields = ('first_name','last_name','username','email','phone_no','image','country','district',"password1","password2")
+        image= forms.ImageField(label='Profile Picture',required=True)
+        district= forms.CharField(label='State/Location/District/Region',required=True)
+        phone_no=forms.CharField(label='Used to Contact You',required=True)
 
 
 

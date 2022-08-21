@@ -25,10 +25,8 @@ class User(AbstractUser):
 	country=models.ForeignKey(
         Country, on_delete=models.CASCADE)
 	district=models.CharField(max_length=13)
-	bank=models.CharField(max_length=100,unique=True)
 	prime=models.BooleanField(default=False)
 	advance_prime=models.BooleanField(default=False)
-	account_number= models.CharField(max_length=100,blank=True)
 	advertiser=models.BooleanField(default=False)
 	date_added =models.DateTimeField(default=timezone.now)
 	def __str__(self):
@@ -73,3 +71,18 @@ class Ad(models.Model):
 
 	def __str__(self):
 		return self.location
+
+
+
+class Billing_rave(models.Model):
+	customer=models.ForeignKey(
+        User, on_delete=models.CASCADE)
+	amount=models.PositiveIntegerField()
+	currency=models.CharField(max_length=200)
+	reference=models.CharField(max_length=200)
+	email=models.EmailField()
+	phone_no=models.CharField(max_length=200)
+	verified=models.BooleanField(default=False)
+	transaction_id=models.CharField(max_length=2000)
+	Completed_status=models.BooleanField(default=True)
+	date_created=models.DateTimeField(auto_now_add=True)
