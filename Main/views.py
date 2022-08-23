@@ -75,9 +75,13 @@ def profile(request):
     else:
         newads=None
     if request.user.prime==True:
+        pass
     elif request.user.advance_prime==True:
+        pass
     elif request.user.advertiser==True:
+        pass
     else:
+        pass
     context={'user':user,'newads':newads,}
     return render(request,'profile.html',context)
 

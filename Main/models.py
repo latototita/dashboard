@@ -32,6 +32,29 @@ class User(AbstractUser):
 	def __str__(self):
 		return self.username
     
+class Watched_Total_Price(models.Model):
+	person = models.ForeignKey(
+        User, on_delete=models.CASCADE)
+	total_ads_money = models.CharField(max_length = 30)
+	date_watched =models.DateTimeField(default=timezone.now)
+	def __str__(self):
+		return self.person
+
+	class Meta:
+		ordering = ('-date_watched', )
+
+
+class Watched_Total(models.Model):
+	person = models.ForeignKey(
+        User, on_delete=models.CASCADE)
+	total_ads_watched = models.CharField(max_length = 30)
+	date_watched =models.DateTimeField(default=timezone.now)
+	def __str__(self):
+		return self.person
+
+	class Meta:
+		ordering = ('-date_watched', )
+
 class Watched(models.Model):
 	person = models.ForeignKey(
         User, on_delete=models.CASCADE)
