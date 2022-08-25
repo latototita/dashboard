@@ -3,3 +3,5 @@ gunicorn
 django_heroku
 whitenoise
 django-crispy-forms
+django-ads
+django-sekizai
