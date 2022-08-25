@@ -22,11 +22,13 @@ from django.conf.urls import (
                                 handler400,
                                 handler403,
                                 handler404,
-                                handler500)
+                                handler500,
+                                url)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Main.urls', namespace='Main')),
+    url(r'^ads/', include('ads.urls')),
     path('Online/payments/', include('Paystack.urls', namespace='Paystack')),
     path('user/accounts/', include('Accounts.urls', namespace='Accounts')),
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),

@@ -1,4 +1,6 @@
 {% load static %}
+{% load ads_tags %}
+{% render_ads_zone 'zone_name' %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25764,7 +25766,7 @@ License - nucleoapp.com/license/
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="/signin">
+          <a class="nav-link  " href="{% url 'Accounts:signin' %}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>document</title>
@@ -25784,7 +25786,7 @@ License - nucleoapp.com/license/
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="/signup">
+          <a class="nav-link  " href="{% url 'Accounts:signup' %}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>spaceship</title>
@@ -25809,7 +25811,7 @@ License - nucleoapp.com/license/
     </div>
     <div class="sidenav-footer mx-3 ">
       <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
-        <div class="full-background" style="background-image: url('static/assets/img/curved-images/white-curved.jpeg')"></div>
+        <div class="full-background" style="background-image: url('../static/white-curved.jpeg')"></div>
         <div class="card-body text-start p-3 w-100">
           <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
             <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true" id="sidenavCardIcon"></i>
@@ -25817,7 +25819,7 @@ License - nucleoapp.com/license/
           <div class="docs-info">
             <h6 class="text-white up mb-0">Global Billboard</h6>
             <p class="text-xs font-weight-bold">Drive Your Business Up By</p>
-            <a href="https://pearlageofteach.ml" target="_blank" class="btn btn-white btn-sm w-100 mb-0">Marketing Here</a>
+            <a href="https://resume.herokuapp.com/" target="_blank" class="btn btn-white btn-sm w-100 mb-0">Marketing Here</a>
           </div>
         </div>
       </div>
@@ -25881,23 +25883,23 @@ License - nucleoapp.com/license/
         <!-- Sidebar Backgrounds -->
 
         <div class="d-flex">
-          <a  href="/signin">
+          <a  href="{% url 'Accounts:signin' %}">
           <button class="btn bg-gradient-primary w-100 px-3 mb-2 active" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button></a>
-          <a  href="/signin">
+          <a  href="{% url 'Accounts:signin' %}">
           <button class="btn bg-gradient-primary w-100 px-3 mb-2 ms-2 fa fa-user" data-class="bg-white" >White</button></a>
         </div>
         <div class="d-flex">
-          <a  href="/signin">
+          <a  href="{% url 'Accounts:signin' %}">
           <button class="btn bg-gradient-primary w-100 px-3 mb-2 active" data-class="bg-transparent" >SignUp</button></a>
           
-          <a  href="/signin">
+          <a  href="{% url 'Accounts:signin' %}">
           <button class="btn bg-gradient-primary w-100 px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button></a>
         </div>
         <div class="d-flex">
-          <a  href="/signin">
+          <a  href="{% url 'Accounts:signin' %}">
           <button class="btn bg-gradient-primary w-100 px-3 mb-2 active" data-class="bg-transparent" >SignIn</button>
           </a>
-          <a  href="/signin">
+          <a  href="{% url 'Accounts:signin' %}">
           <button class="btn bg-gradient-primary w-100 px-3 mb-2 ms-2" data-class="bg-white" >White</button></a>
         </div>
        

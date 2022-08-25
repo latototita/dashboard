@@ -74,24 +74,45 @@ def profile(request):
                 newads=ads[0]
     else:
         newads=None
-    if request.user.prime==True:
-        pass
-    elif request.user.advance_prime==True:
-        pass
-    elif request.user.advertiser==True:
-        pass
-    else:
-        pass
+    if request.user.is_authenticated:
+        if user.prime==True:
+            if Watched_Total_Price.objects.filter(person=request.user).filter(date_watched=timezone):
+                ads_money=Watched_Total_Price.objects.filter(person=request.user)
+                ads_money1=ads_money.total_ads_money
+                new_ads_money=0.0067+ads_money1
+                ads_money.total_ads_money=new_ads_money
+                ads_money.save()
+            else:
+                ads_money=Watched_Total_Price(
+                    person=request.user,
+                    total_ads_money=ads_money,
+                    )
+        elif user.advance_prime==True:
+            if Watched_Total_Price.objects.filter(person=request.user).filter(date_watched=timezone):
+                ads_money=Watched_Total_Price.objects.filter(person=request.user)
+                ads_money1=ads_money.total_ads_money
+                new_ads_money=0.0067+ads_money1
+                ads_money.total_ads_money=new_ads_money
+                ads_money.save()
+            else:
+                ads_money=Watched_Total_Price(
+                    person=request.user,
+                    total_ads_money=ads_money,
+                    )
+        elif user.advertiser==True:
+            pass
+        else:
+            pass
     context={'user':user,'newads':newads,}
     return render(request,'profile.html',context)
 
-def tables(request):
+def watched(request):
     if request.user.is_authenticated:
         watched=Watched.objects.filter(person=request.user)
     else:
         watched=None
     context={'watched':watched}
-    return render(request,'tables.html',context)
+    return render(request,'watched.html',context)
 def dashboard(request):
     if request.user.is_authenticated:
         watched=Watched.objects.filter(ids=request.user.id)

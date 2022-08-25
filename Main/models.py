@@ -27,7 +27,7 @@ class User(AbstractUser):
 	district=models.CharField(max_length=13)
 	prime=models.BooleanField(default=False)
 	advance_prime=models.BooleanField(default=False)
-	advertiser=models.BooleanField(default=False)
+	advertisers=models.BooleanField(default=False)
 	date_added =models.DateTimeField(default=timezone.now)
 	def __str__(self):
 		return self.username
